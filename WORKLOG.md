@@ -20,7 +20,8 @@
 - 决定：使用公开仓库 `houqingyang763-eng/go2w-x5-litter-picking`。GitHub 插件与本机 CLI 账号不同，经用户确认使用本机账号；插件缺少建仓能力，使用 GitHub CLI 创建。
 - 已核验：本机 Windows/WSL/工具入口；公开 SDK 中的 Go2-W 专用例程和 X5 IK 示例。来源与访问限制见 [docs/RESOURCES.md](docs/RESOURCES.md)。
 - 本地检查：7 份 Markdown、18 处本地文件链接均通过；代码围栏配对与 UTF-8 内容检查通过，`git diff --cached --check` 无错误。文档交叉复核后修正了 IK 位姿表述，并将上机待办集中到 `STATUS.md`。
-- 发布状态：公开仓库已创建，首版内容待推送并核验。
+- 发布：9 个文件已通过 GitHub 官方 API 发布到公开仓库的 `main`；核验无需登录可访问仓库，项目上下文原文返回 HTTP 200，本地与远端提交和文件树一致。
+- 连接问题：常规 Git HTTPS 推送失败，本机对 `github.com` 的解析返回了不可信证书链；改用 `api.github.com` 发布。未修改系统 DNS、证书或全局 Git 配置，常规 Git 传输问题留待后续排查。
 - 未做：本项目软件安装、仿真、语义 demo、真机连接、服务器连接或任何机器人动作。
 
 ## 维护约定的参考

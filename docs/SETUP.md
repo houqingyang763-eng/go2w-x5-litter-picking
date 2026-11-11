@@ -13,6 +13,8 @@
 | Python | 当前 PowerShell 的 PATH 指向 Anaconda Python 3.7.0 | 不能直接当作本项目 Python；后续建立独立环境 |
 | ROS 2 / Docker / CMake | 当前 PowerShell 的 PATH 未找到对应命令 | 只表示当前 shell 未发现，不等于整台电脑所有环境均未安装 |
 
+建仓时还发现：本机常规 Git HTTPS 访问 `github.com` 遇到不可信证书链，独立 DNS 查询与本机解析结果不同；临时指定独立查询得到的地址仍未完成推送。本次通过连接正常的 GitHub 官方 `api.github.com` 发布文件，并同步本地提交、核对公开访问。没有改动系统 DNS、证书或全局 Git 配置。**常规 `git fetch/push` 尚未恢复**，后续需要单独排查本机连接；这不影响当前公开文档阅读。
+
 ## 2. 先确定兼容组合，再安装
 
 目前没有足够信息直接锁定整套系统的 OS、ROS 和 Python 版本。候选是为本项目单独建立 Linux 开发环境，优先评估 **Ubuntu 22.04 + ROS 2 Humble**；依据是 Unitree ROS 2 官方 README 推荐该组合。它尚未通过 X5 与交付 Go2-W 的联合兼容验证，属于候选路线。
