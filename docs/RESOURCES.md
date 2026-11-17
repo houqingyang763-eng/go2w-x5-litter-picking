@@ -1,6 +1,6 @@
 # 官方资源与核验记录
 
-核验日期：2026-11-11。下表区分“入口已找到”和“内容已读”，避免把网页链接当作已经确认的接口说明。本仓库不复制厂商 SDK、账号信息或交付资料。
+硬件 SDK 核验日期：2026-11-11；视觉与可通行性参考入口补充日期：2026-11-17。下表区分“入口已找到”和“内容已读”，避免把网页链接当作已经确认的接口说明。本仓库不复制厂商 SDK、账号信息或交付资料。
 
 ## 1. 宇树 Go2-W
 
@@ -52,3 +52,21 @@
 | `ARXroboticsX/X5` | `master` | `9a255e38156e3f5a263f341df209ab028d49dad9` |
 
 遇到网页不可读时，应先查看原始官方页面或向交付方确认。不能把抓取失败解释为设备不支持某项功能，也不能用其他型号文档补成“已确认”。
+
+## 视觉与可通行性参考
+
+2026-11-17 根据用户新增背景核对作者项目页、官方仓库与论文入口；本次仅核对入口和下述边界，没有完整论文评述、下载权重、复现或性能测试。
+
+| 工作 | 官方入口 | 本项目关注点与边界 |
+| --- | --- | --- |
+| WVN：Wild Visual Navigation | [项目页](https://sites.google.com/leggedrobotics.com/wild-visual-navigation/home)、[代码](https://github.com/leggedrobotics/wild_visual_navigation)、[RSS 2023 论文](https://arxiv.org/abs/2305.08510)、[扩展版](https://arxiv.org/abs/2404.07110) | 用户优先关注。利用视觉特征与实际运动反馈学习可通行性；标签、视觉预测、空间地图和导航集成分别梳理。尚未确认能直接迁移至 Go2-W |
+| DINO | [代码](https://github.com/facebookresearch/dino)、[论文](https://arxiv.org/abs/2104.14294) | 自监督视觉表征；特征不直接等于命名地形类别或通行代价 |
+| DINOv2 | [代码](https://github.com/facebookresearch/dinov2)、[论文](https://arxiv.org/abs/2304.07193) | 独立于原 DINO 的模型与实现，具体复现版本待选；下游任务和评价需另外建立 |
+| STEGO | [代码](https://github.com/mhamilton723/STEGO)、[论文](https://arxiv.org/abs/2203.08414) | 原方法基于 DINO 特征学习无监督语义分割；簇编号不自动等于地形名称或风险 |
+| SemMap | 用户提到，尚未提供准确论文标题、版本或链接 | 暂保留为待确认线索；不推断是哪项同名工作，也不据此设计接口 |
+
+### WVN 的复现环境边界
+
+- 官方仓库说明的现有机器人集成包含 ANYmal/Jackal 的 **ROS 1** 包，依赖列出 ROS 1 Noetic。项目计划采用 ROS 2 Humble，不应据此声称已有可直接使用的 ROS 2 驱动或集成。
+- [官方 Docker 演示说明](https://github.com/leggedrobotics/wild_visual_navigation/blob/main/docker/README.md)在 Ubuntu 测试，并说明不预期 Windows/Mac 的图形界面直接运行。WSL、图形转发、GPU 与容器的具体组合需在复现任务中实测，当前没有结果。
+- 离线算法验证可先独立研究；机器人端输入、标签信号和部署方式要根据 Go2-W 实际状态接口与计算设备决定。用户目前未选定完全在线、离线或混合学习。
