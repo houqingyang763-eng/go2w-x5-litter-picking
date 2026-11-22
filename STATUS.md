@@ -1,6 +1,6 @@
 # 当前状态
 
-更新日期：2026-11-17。这里是当前进度和待办的入口；历史细节见 [WORKLOG.md](WORKLOG.md)。
+更新日期：2026-11-22。这里是当前进度和待办的入口；历史细节见 [WORKLOG.md](WORKLOG.md)。
 
 ## 所处阶段
 
@@ -11,6 +11,7 @@
 | 本地 Git 与公开 GitHub 仓库 | 已建立并发布到 `main`；公开访问与本地/远端内容一致性已核验 |
 | 系统构成与接口理解 | 初稿已写，建议架构与交付事实分别说明 |
 | 官方资源核验 | 保留 11-11 SDK 核验；11-17 补充 WVN、DINO/DINOv2、STEGO 入口及兼容边界 |
+| GO 春冬轨迹（Issue #3） | 已离线验收。前向左相机预览 79 / 83 帧，约 6 FPS 序列各 3,600 帧，官方标注精确匹配 119 / 110 帧。春季有绿草与土路，冬季 110 帧均含雪且裸土标签覆盖为 0。数据位于 `D:/Go2W-data/go_issue3`，等待用户审阅。 [复现和验收](scripts/go_tracks/README.md) · [Issue #3](https://github.com/houqingyang763-eng/go2w-x5-litter-picking/issues/3) |
 | 本机环境 | 保留 11-11 只读盘点，本轮未复测或安装；用户具备 Linux/Docker/深度学习/ROS 2 基础 |
 | 软件栈 | Ubuntu 22.04 + ROS 2 Humble、Python 为当前计划；PyTorch/CUDA 按需，整套依赖兼容尚未确认 |
 | 个人优先方向 | 视觉语义感知 + 地形可通行性估计 + 语义代价地图；算法未定版 |
