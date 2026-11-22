@@ -1,0 +1,20 @@
+{
+  "checkpoint": {
+    "file": "ddrnet_category_512.pth",
+    "url": "https://goose-dataset.de/models/ddrnet_category_512.pth",
+    "sha256": "ddab58d3b27309e4e1545ecb0eafbe077f3ebd58fe7120defe44478424c2a20e"
+  },
+  "image": {
+    "archive": "https://goose-dataset.de/storage/goose_2d_val.zip",
+    "member": "images/val/2022-07-22_flight/2022-07-22_flight__0071_1658494234334310308_windshield_vis.png",
+    "bytes": 2459348,
+    "file": "goose_val_rgb.png",
+    "sha256": "60cf0bed52cf700a1d122d046a8766edb5e50b12174b63b0a9a899eed39afaa1"
+  },
+  "goose_source_revision": "fbbc0e755e54bbdc65a9fa7a3f327533425025f6",
+  "super_gradients": {
+    "file": "super_gradients-3.7.1-py3-none-any.whl",
+    "release": "https://pypi.org/project/super-gradients/3.7.1/",
+    "sha256": "f4ebf2f551399f77070609da15efb2cfaf90392a38be4be8b1d4eab0d9c47381"
+  }
+}
