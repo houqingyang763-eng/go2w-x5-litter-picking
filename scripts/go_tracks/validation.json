@@ -1,0 +1,69 @@
+{
+  "spring": {
+    "source": "tamu_full_stack_morning_run_1_2024-04-24-08-30-42_filtered.bag",
+    "archive_bytes": 45242711455,
+    "bag_duration_s": 781.556878288,
+    "gallery_frames": 79,
+    "label_splits": {
+      "train": 119
+    },
+    "matched_labels": 119,
+    "label_frames_by_class": {
+      "grass": 116,
+      "dirt": 108,
+      "trees": 119,
+      "sky": 75,
+      "snow": 0
+    },
+    "labels_with_grass_and_dirt": 106,
+    "bag_official_rgb_mean_absolute_pixel_difference": {
+      "median": 0.9332,
+      "maximum": 1.314815
+    },
+    "sequence_frames": 3600,
+    "sequence_seconds": 599.817652224,
+    "sequence_mean_fps": 6.000157,
+    "sequence_max_gap_ms": 233.379072,
+    "sequence_max_target_offset_ms": 43.385278,
+    "sequence_frames_with_official_label": 16,
+    "successful_bag_range_bytes": 4462209897
+  },
+  "winter": {
+    "source": "2025-01-24-10-42-36_newcal.bag",
+    "archive_bytes": 61499289407,
+    "bag_duration_s": 827.582903664,
+    "gallery_frames": 83,
+    "label_splits": {
+      "val": 60,
+      "test": 50
+    },
+    "matched_labels": 110,
+    "label_frames_by_class": {
+      "grass": 19,
+      "dirt": 0,
+      "trees": 110,
+      "sky": 54,
+      "snow": 110
+    },
+    "labels_with_grass_and_dirt": 0,
+    "bag_official_rgb_mean_absolute_pixel_difference": {
+      "median": 0.512364,
+      "maximum": 0.919362
+    },
+    "sequence_frames": 3600,
+    "sequence_seconds": 599.849152512,
+    "sequence_mean_fps": 5.999842,
+    "sequence_max_gap_ms": 200.04096,
+    "sequence_max_target_offset_ms": 43.116093,
+    "sequence_frames_with_official_label": 15,
+    "successful_bag_range_bytes": 4036038850
+  },
+  "preview_local_links": 1716,
+  "local_storage": {
+    "files": 8929,
+    "unique_files": 8778,
+    "bytes_deduplicated_by_file_id": 2291201564,
+    "logical_bytes_counting_all_paths": 2334539027,
+    "device_free_bytes_after_cleanup": 146404175872
+  }
+}
