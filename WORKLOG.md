@@ -46,3 +46,9 @@
 ## 2026-11-22 — GitHub 自动开 PR
 
 - 新增 GitHub Actions 工作流，为 Codex 工作分支自动开 PR，检查已有开放 PR 并按分支名引用 Issue。 [工作流](.github/workflows/auto-pull-request.yml)
+
+## 2026-11-22 — GO 春季 600 帧 DDRNet-64 板载回放（Issue #7）
+
+- 从春季序列原顺序选取第 1621–2220 条（04:30.143–06:09.962），逐张确认 SHA256 与板载传输一致。
+- Orin NX 15W 一次加载官方 DDRNet-39 64 类权重，连续处理 600/600 帧。含写盘 4.75 FPS，不含写盘 4.89 FPS。记录了 246 条循环内温度、功耗、GPU、CPU 和 RAM 样本。
+- PC 端逐帧核对 600 张掩膜与原时间戳，输出 100 秒原图和叠加对比视频及 12 个代表帧。真机静态序列验收完成。 [验收记录](scripts/goose_ddrnet/SEQUENCE_VALIDATION.md)

@@ -37,6 +37,19 @@ def read_palette(path):
     return mapping, palette
 
 
+def load_model(weights, num_classes):
+    """Load the shared DDRNet-39 forward implementation and its full checkpoint once."""
+    from ddrnet_forward import DDRNet39, HpmStruct
+
+    checkpoint = torch.load(weights, map_location="cpu", weights_only=True)
+    state = checkpoint["net"]
+    model = DDRNet39(HpmStruct(num_classes=num_classes))
+    model.load_state_dict(state, strict=True)
+    state_count = len(state)
+    del checkpoint, state
+    return model.eval().to("cuda:0"), state_count
+
+
 def preprocess(path, size):
     with Image.open(path) as source:
         rgb = source.convert("RGB")
@@ -133,7 +146,7 @@ def main():
     args = parser.parse_args()
     base = args.base.resolve()
     sys.path.insert(0, str(base / "code"))
-    from infer_goose import DDRNet39, HpmStruct, REPEATS, SIZE, WARMUPS, file_sha256, timed_forward
+    from infer_goose import REPEATS, SIZE, WARMUPS, file_sha256, timed_forward
 
     base_assets = json.loads((base / "code/assets.json").read_text(encoding="utf-8"))
     class_assets = json.loads((code / "assets_class64.json").read_text(encoding="utf-8"))
@@ -165,13 +178,7 @@ def main():
             raise ValueError("GOOSE label mapping SHA256 mismatch.")
         mapping, palette = read_palette(mapping_path)
 
-    checkpoint = torch.load(weights, map_location="cpu", weights_only=True)
-    state = checkpoint["net"]
-    model = DDRNet39(HpmStruct(num_classes=args.classes))
-    model.load_state_dict(state, strict=True)
-    state_count = len(state)
-    del checkpoint, state
-    model.eval().to("cuda:0")
+    model, state_count = load_model(weights, args.classes)
 
     _, tensor = preprocess(image_path, SIZE)
     logits, times = timed_forward(model, tensor)

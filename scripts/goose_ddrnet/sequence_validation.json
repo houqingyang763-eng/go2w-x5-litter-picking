@@ -1,0 +1,440 @@
+{
+  "date": "2026-11-22",
+  "verification": "actual_jetson_offline_sequence_replay",
+  "board": {
+    "board": "Orin",
+    "compute_capability": [
+      8,
+      7
+    ],
+    "power_mode_before": "15W",
+    "power_mode_after": "15W",
+    "torch": "2.0.0+nv23.05",
+    "cuda": "11.4",
+    "weights": "ddrnet_class_512.pth",
+    "weights_sha256": "b99c2838051bcd7b092fd3970aa62a77d5c0bbb809c9b9afb2ff4b0ebdaa4ee6",
+    "class_mapping_sha256": "88ae319ba5a3877dd3ae0773f693a6a5fdc283934140de9dfaff029108aefd7f",
+    "strictly_loaded_state_entries": 501,
+    "model_load_count": 1,
+    "dtype": "torch.float32",
+    "input_shape": [
+      1,
+      3,
+      512,
+      512
+    ],
+    "output_shape_verified_in_warmup": [
+      1,
+      64,
+      512,
+      512
+    ],
+    "warmup_frames": 3,
+    "model_load_ms": 2950.1560960006827,
+    "warmup_ms": 3167.9567999999563,
+    "window": {
+      "bag": "tamu_full_stack_morning_run_1_2024-04-24-08-30-42_filtered.bag",
+      "camera_topic": "/lester/stereo_left/image_rect_color/compressed",
+      "frame_count": 600,
+      "source_row_first_last_1based": [
+        1621,
+        2220
+      ],
+      "source_elapsed_first_last_s": [
+        "270.142608630",
+        "369.962214902"
+      ],
+      "first_stamp_ns": "1713962114715012352",
+      "last_stamp_ns": "1713962214534618624",
+      "first_file": "1713962114715012352_12811.jpg",
+      "last_file": "1713962214534618624_15805.jpg",
+      "span_s": 99.819606272,
+      "actual_fps": 6.000825112130532,
+      "gap_ms": {
+        "min": 133.359104,
+        "median": 166.69952,
+        "max": 200.03968
+      },
+      "source_sequence_sha256": "f3e152b7282ffb957abd24ddc15e984afa5c5c519c1f20867e2d7394b12d24b2",
+      "input_bytes": 215266874
+    },
+    "attempted_frames": 600,
+    "successful_frames": 600,
+    "failed_frame_numbers": [],
+    "wall_s": 126.24117763200047,
+    "loop_started_s": 11.641870495999683,
+    "loop_finished_s": 137.88304812800015,
+    "fps_with_mask_write": 4.7528073743816845,
+    "peak_cuda_allocated_mib": 218.84765625,
+    "peak_cuda_reserved_mib": 342.0,
+    "tegrastats_interval_ms": 500,
+    "tegrastats_samples": 258,
+    "tegrastats_access": "sudo read-only",
+    "fps_without_mask_write": 4.889326817504326,
+    "first_frame_cpu_mask_s": 11.853727904000152,
+    "first_frame_saved_s": 11.858320575999642,
+    "id_min_max": [
+      0,
+      59
+    ],
+    "milliseconds": {
+      "preprocess_ms": {
+        "mean": 28.958362986660784,
+        "p50": 29.006000000208587,
+        "p95": 29.32473280056911,
+        "p99": 29.78588032001425,
+        "max": 35.033567999562365
+      },
+      "forward_ms": {
+        "mean": 171.95195081075033,
+        "p50": 171.9382553100586,
+        "p95": 172.4767639160156,
+        "p99": 172.5753402709961,
+        "max": 173.0406036376953
+      },
+      "postprocess_ms": {
+        "mean": 3.4948027733313816,
+        "p50": 3.4760000003188907,
+        "p95": 3.7107407999428688,
+        "p99": 3.74257311981637,
+        "max": 4.6439360003205366
+      },
+      "processing_ms": {
+        "mean": 204.52713375998732,
+        "p50": 204.5178080002188,
+        "p95": 205.27635199991892,
+        "p99": 205.80170143997748,
+        "max": 211.71990400034701
+      },
+      "mask_write_ms": {
+        "mean": 4.69111424001009,
+        "p50": 4.686816000230465,
+        "p95": 4.865624000240132,
+        "p99": 4.913468159202239,
+        "max": 7.172448000346776
+      },
+      "frame_wall_ms": {
+        "mean": 209.22923759999776,
+        "p50": 209.21223999994254,
+        "p95": 210.0343888003863,
+        "p99": 211.3120636800886,
+        "max": 216.31257599983655
+      }
+    },
+    "first_100": {
+      "frames": 100,
+      "start_s": 11.642007999999805,
+      "end_s": 32.69715875199927,
+      "fps_with_mask_write": 4.749431679585751,
+      "fps_without_mask_write": 4.883176357678852,
+      "forward_p50_ms": 171.99231719970703,
+      "processing_p50_ms": 204.72857600043426,
+      "cuda_allocated_end_of_frame_mib": [
+        126.34765625,
+        126.34765625
+      ],
+      "cuda_reserved_end_of_frame_mib": [
+        342.0,
+        342.0
+      ]
+    },
+    "last_100": {
+      "frames": 100,
+      "start_s": 116.85983302399927,
+      "end_s": 137.88209043200004,
+      "fps_with_mask_write": 4.756863074178772,
+      "fps_without_mask_write": 4.89493422333017,
+      "forward_p50_ms": 171.96985626220703,
+      "processing_p50_ms": 204.3148640000254,
+      "cuda_allocated_end_of_frame_mib": [
+        126.34765625,
+        126.34765625
+      ],
+      "cuda_reserved_end_of_frame_mib": [
+        342.0,
+        342.0
+      ]
+    }
+  },
+  "resource_samples_aggregate": {
+    "all_recorded_samples": 258,
+    "observed_interval_p50_ms": 513.4978879999999,
+    "whole_run": {
+      "samples": 246,
+      "cpu_average_online_pct": {
+        "count": 246,
+        "mean": 27.524390243902438,
+        "p50": 26.75,
+        "min": 25.25,
+        "max": 53.0
+      },
+      "gpu_pct": {
+        "count": 246,
+        "mean": 82.36178861788618,
+        "p50": 99.0,
+        "min": 0,
+        "max": 99
+      },
+      "gpu_clock_mhz": {
+        "count": 246,
+        "mean": 611.0853658536586,
+        "p50": 611.0,
+        "min": 611,
+        "max": 612
+      },
+      "ram_used_mb": {
+        "count": 246,
+        "mean": 5657.365853658536,
+        "p50": 5658.0,
+        "min": 5655,
+        "max": 5658
+      },
+      "swap_used_mb": {
+        "count": 246,
+        "mean": 0.0,
+        "p50": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "gpu_c": {
+        "count": 246,
+        "mean": 56.44346341463414,
+        "p50": 56.75,
+        "min": 52.656,
+        "max": 58.25
+      },
+      "cpu_c": {
+        "count": 246,
+        "mean": 59.77679674796747,
+        "p50": 60.062,
+        "min": 55.968,
+        "max": 61.562
+      },
+      "junction_c": {
+        "count": 246,
+        "mean": 59.781113821138206,
+        "p50": 60.0935,
+        "min": 55.968,
+        "max": 61.531
+      },
+      "vdd_in_w": {
+        "count": 246,
+        "mean": 9.491955284552844,
+        "p50": 9.494,
+        "min": 9.291,
+        "max": 10.022
+      },
+      "gpu_clock_mhz_at_70pct_or_higher": {
+        "count": 196,
+        "mean": 611.0969387755102,
+        "p50": 611.0,
+        "min": 611,
+        "max": 612
+      }
+    },
+    "first_100": {
+      "samples": 41,
+      "cpu_average_online_pct": {
+        "count": 41,
+        "mean": 30.871951219512194,
+        "p50": 27.0,
+        "min": 25.5,
+        "max": 53.0
+      },
+      "gpu_pct": {
+        "count": 41,
+        "mean": 81.97560975609755,
+        "p50": 99.0,
+        "min": 0,
+        "max": 99
+      },
+      "gpu_clock_mhz": {
+        "count": 41,
+        "mean": 611.0487804878048,
+        "p50": 611.0,
+        "min": 611,
+        "max": 612
+      },
+      "ram_used_mb": {
+        "count": 41,
+        "mean": 5655.756097560976,
+        "p50": 5656.0,
+        "min": 5655,
+        "max": 5657
+      },
+      "swap_used_mb": {
+        "count": 41,
+        "mean": 0.0,
+        "p50": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "gpu_c": {
+        "count": 41,
+        "mean": 54.16417073170731,
+        "p50": 54.093,
+        "min": 52.656,
+        "max": 55.312
+      },
+      "cpu_c": {
+        "count": 41,
+        "mean": 57.47212195121951,
+        "p50": 57.5,
+        "min": 55.968,
+        "max": 58.468
+      },
+      "junction_c": {
+        "count": 41,
+        "mean": 57.48736585365854,
+        "p50": 57.5,
+        "min": 55.968,
+        "max": 58.468
+      },
+      "vdd_in_w": {
+        "count": 41,
+        "mean": 9.505243902439025,
+        "p50": 9.454,
+        "min": 9.291,
+        "max": 10.022
+      },
+      "gpu_clock_mhz_at_70pct_or_higher": {
+        "count": 33,
+        "mean": 611.060606060606,
+        "p50": 611.0,
+        "min": 611,
+        "max": 612
+      }
+    },
+    "last_100": {
+      "samples": 41,
+      "cpu_average_online_pct": {
+        "count": 41,
+        "mean": 26.78048780487805,
+        "p50": 26.5,
+        "min": 25.5,
+        "max": 28.5
+      },
+      "gpu_pct": {
+        "count": 41,
+        "mean": 83.1951219512195,
+        "p50": 99.0,
+        "min": 0,
+        "max": 99
+      },
+      "gpu_clock_mhz": {
+        "count": 41,
+        "mean": 611.0487804878048,
+        "p50": 611.0,
+        "min": 611,
+        "max": 612
+      },
+      "ram_used_mb": {
+        "count": 41,
+        "mean": 5658.0,
+        "p50": 5658.0,
+        "min": 5658,
+        "max": 5658
+      },
+      "swap_used_mb": {
+        "count": 41,
+        "mean": 0.0,
+        "p50": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "gpu_c": {
+        "count": 41,
+        "mean": 57.8380243902439,
+        "p50": 57.906,
+        "min": 57.093,
+        "max": 58.25
+      },
+      "cpu_c": {
+        "count": 41,
+        "mean": 61.25351219512196,
+        "p50": 61.25,
+        "min": 61.0,
+        "max": 61.562
+      },
+      "junction_c": {
+        "count": 41,
+        "mean": 61.255024390243904,
+        "p50": 61.25,
+        "min": 61.031,
+        "max": 61.531
+      },
+      "vdd_in_w": {
+        "count": 41,
+        "mean": 9.513048780487805,
+        "p50": 9.494,
+        "min": 9.373,
+        "max": 9.657
+      },
+      "gpu_clock_mhz_at_70pct_or_higher": {
+        "count": 33,
+        "mean": 611.030303030303,
+        "p50": 611.0,
+        "min": 611,
+        "max": 612
+      }
+    }
+  },
+  "pc_verification": 600,
+  "video": {
+    "frames": 600,
+    "duration_s": 100.0,
+    "display_fps": 6,
+    "resolution": [
+      1280,
+      572
+    ],
+    "bytes": 87825445,
+    "representative_frames": [
+      1,
+      55,
+      110,
+      164,
+      219,
+      273,
+      328,
+      382,
+      437,
+      491,
+      546,
+      600
+    ],
+    "key_class_output_pixels": {
+      "gravel": 24584569,
+      "soil": 9024050,
+      "low_grass": 39427786,
+      "high_grass": 178516,
+      "forest": 49293703,
+      "tree_crown": 1343681,
+      "tree_trunk": 22909594,
+      "sky": 2521757
+    },
+    "preview_local_links": 43
+  },
+  "board_transfer": {
+    "input": {
+      "frames": 600,
+      "first_stamp_ns": "1713962114715012352",
+      "last_stamp_ns": "1713962214534618624",
+      "input_manifest_sha256": "10752f410c5cd39e6ad09b4d3d4742cdcece490777baafba73a9c0f45c57e17e"
+    },
+    "output": {
+      "files": 604,
+      "masks": 600,
+      "sha256": "ab4e3adf98015e6ad2696f7e5385d844c5e03a2b8647eb1773b58fb51b849ec2",
+      "bytes": 6286575
+    }
+  },
+  "existing_board_artifacts_sha256_equal": [
+    "weight",
+    "mapping",
+    "prior_infer",
+    "prior_result",
+    "prior_mask",
+    "original_result"
+  ]
+}
