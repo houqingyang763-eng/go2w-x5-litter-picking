@@ -9,6 +9,7 @@
 | 项目 | 当前状态 |
 | --- | --- |
 | 本地 Git 与公开 GitHub 仓库 | 已建立并发布到 `main`；公开访问与本地/远端内容一致性已核验 |
+| GitHub 自动开 PR | 推送有新增提交的 Codex 工作分支后，由 GitHub Actions 开 PR 或沿用已有开放 PR。分支名中的 Issue 编号会写入 PR。 [工作流](.github/workflows/auto-pull-request.yml) |
 | 系统构成与接口理解 | 初稿已写，建议架构与交付事实分别说明 |
 | 官方资源核验 | 保留 11-11 SDK 核验；11-17 补充 WVN、DINO/DINOv2、STEGO 入口及兼容边界 |
 | GOOSE DDRNet-39 64 类（Issue #4） | Orin NX 15W 真机验收通过。沿用 #2 虚拟环境，64 类 CUDA FP32 前向中位数 171.49 ms，前向 CUDA 分配峰值 217.85 MiB。12 类同场对照 167.09 ms。已返回三张图的原图、着色与叠加，量化分割精度待统一测试集评估。 [复现与验收](scripts/goose_ddrnet/VALIDATION_CLASS64.md) · [Issue #4](https://github.com/houqingyang763-eng/go2w-x5-litter-picking/issues/4) |

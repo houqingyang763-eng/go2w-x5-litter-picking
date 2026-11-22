@@ -42,3 +42,7 @@
 - 15W 同图比较中，12 类前向 167.09 ms，64 类 171.49 ms。前向 CUDA 分配峰值分别为 164.98、217.85 MiB。旧掩膜与复测结果逐像素一致，已有板载资产通过前后校验。
 - 输出 GOOSE 官方图和 GO 春季草土、碎石两张样例的原图、颜色掩膜、叠加图与图例。GO 草土样例的土路区域多输出碎石，样例结果仅供定性检查。
 - 真机计时口径、复现命令与本机预览位置见 [验收记录](scripts/goose_ddrnet/VALIDATION_CLASS64.md)。
+
+## 2026-11-22 — GitHub 自动开 PR
+
+- 新增 GitHub Actions 工作流，为 Codex 工作分支自动开 PR，检查已有开放 PR 并按分支名引用 Issue。 [工作流](.github/workflows/auto-pull-request.yml)
