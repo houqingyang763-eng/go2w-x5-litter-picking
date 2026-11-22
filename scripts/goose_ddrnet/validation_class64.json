@@ -1,0 +1,660 @@
+{
+  "date": "2026-11-22",
+  "validation": "live_board_static_images",
+  "board": {
+    "model": "Jetson Orin NX 16GB",
+    "architecture": "aarch64",
+    "power_mode": "15W",
+    "power_mode_id": 2,
+    "l4t": "35.3.1",
+    "python": "3.8.10"
+  },
+  "issue2_artifacts_kept_with_identical_sha256": [
+    "input",
+    "category_weight",
+    "forward_source",
+    "original_result",
+    "original_mask"
+  ],
+  "category_control_mask_pixel_equal_to_issue2": true,
+  "tests": {
+    "goose_12_control": {
+      "classes": 12,
+      "weights": "ddrnet_category_512.pth",
+      "weights_sha256": "ddab58d3b27309e4e1545ecb0eafbe077f3ebd58fe7120defe44478424c2a20e",
+      "strictly_loaded_state_entries": 501,
+      "image": "goose_val_rgb.png",
+      "image_sha256": "60cf0bed52cf700a1d122d046a8766edb5e50b12174b63b0a9a899eed39afaa1",
+      "image_width_height": [
+        2048,
+        1000
+      ],
+      "input_shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "output_shape": [
+        1,
+        12,
+        512,
+        512
+      ],
+      "output_dtype": "torch.float32",
+      "finite_cuda_logits": true,
+      "device": "Orin",
+      "compute_capability": [
+        8,
+        7
+      ],
+      "torch": "2.0.0+nv23.05",
+      "cuda": "11.4",
+      "cudnn": 8600,
+      "tf32": false,
+      "warmup_count": 3,
+      "forward_count": 10,
+      "forward_ms": [
+        167.05142211914062,
+        167.11981201171875,
+        167.453857421875,
+        167.04141235351562,
+        167.43728637695312,
+        166.8291778564453,
+        167.90675354003906,
+        166.68275451660156,
+        167.6820526123047,
+        166.82009887695312
+      ],
+      "forward_min_ms": 166.68275451660156,
+      "forward_median_ms": 167.0856170654297,
+      "forward_max_ms": 167.90675354003906,
+      "peak_forward_cuda_allocated_mib": 164.984375,
+      "peak_forward_cuda_reserved_mib": 214.0,
+      "peak_cuda_allocated_mib": 164.984375,
+      "peak_cuda_reserved_mib": 214.0,
+      "id_min_max": [
+        1,
+        9
+      ],
+      "one_warm_image_wall_ms": {
+        "preprocess_ms": 122.2857919992748,
+        "forward_wall_ms": 167.73388800083922,
+        "argmax_and_copy_ms": 1.836543999161222,
+        "single_image_no_save_ms": 291.85622399927524
+      }
+    },
+    "goose_64": {
+      "classes": 64,
+      "weights": "ddrnet_class_512.pth",
+      "weights_sha256": "b99c2838051bcd7b092fd3970aa62a77d5c0bbb809c9b9afb2ff4b0ebdaa4ee6",
+      "strictly_loaded_state_entries": 501,
+      "image": "goose_val_rgb.png",
+      "image_sha256": "60cf0bed52cf700a1d122d046a8766edb5e50b12174b63b0a9a899eed39afaa1",
+      "image_width_height": [
+        2048,
+        1000
+      ],
+      "input_shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "output_shape": [
+        1,
+        64,
+        512,
+        512
+      ],
+      "output_dtype": "torch.float32",
+      "finite_cuda_logits": true,
+      "device": "Orin",
+      "compute_capability": [
+        8,
+        7
+      ],
+      "torch": "2.0.0+nv23.05",
+      "cuda": "11.4",
+      "cudnn": 8600,
+      "tf32": false,
+      "warmup_count": 3,
+      "forward_count": 10,
+      "forward_ms": [
+        170.96485900878906,
+        171.45286560058594,
+        171.65174865722656,
+        171.3104705810547,
+        171.3856964111328,
+        171.8955841064453,
+        170.95616149902344,
+        171.65472412109375,
+        171.63174438476562,
+        171.5325164794922
+      ],
+      "forward_min_ms": 170.95616149902344,
+      "forward_median_ms": 171.49269104003906,
+      "forward_max_ms": 171.8955841064453,
+      "peak_forward_cuda_allocated_mib": 217.84765625,
+      "peak_forward_cuda_reserved_mib": 278.0,
+      "peak_cuda_allocated_mib": 305.34765625,
+      "peak_cuda_reserved_mib": 342.0,
+      "id_min_max": [
+        11,
+        53
+      ],
+      "one_warm_image_wall_ms": {
+        "preprocess_ms": 122.52995200014993,
+        "forward_wall_ms": 172.6652480001576,
+        "argmax_and_copy_ms": 3.7434559999383055,
+        "single_image_no_save_ms": 298.9386560002458
+      },
+      "legend_mapping_sha256": "88ae319ba5a3877dd3ae0773f693a6a5fdc283934140de9dfaff029108aefd7f",
+      "reference_regions_description": {
+        "forest": {
+          "reference_pixels": 100485,
+          "prediction_top3": [
+            [
+              "forest",
+              76.12
+            ],
+            [
+              "tree_crown",
+              16.34
+            ],
+            [
+              "fence",
+              6.01
+            ]
+          ]
+        },
+        "gravel": {
+          "reference_pixels": 24226,
+          "prediction_top3": [
+            [
+              "gravel",
+              79.4
+            ],
+            [
+              "high_grass",
+              10.05
+            ],
+            [
+              "low_grass",
+              5.4
+            ]
+          ]
+        },
+        "tree_crown": {
+          "reference_pixels": 53296,
+          "prediction_top3": [
+            [
+              "forest",
+              59.35
+            ],
+            [
+              "tree_crown",
+              38.22
+            ],
+            [
+              "fence",
+              1.95
+            ]
+          ]
+        },
+        "tree_trunk": {
+          "reference_pixels": 384,
+          "prediction_top3": [
+            [
+              "tree_crown",
+              96.09
+            ],
+            [
+              "fence",
+              3.91
+            ]
+          ]
+        },
+        "low_grass": {
+          "reference_pixels": 2761,
+          "prediction_top3": [
+            [
+              "low_grass",
+              86.93
+            ],
+            [
+              "high_grass",
+              13.07
+            ]
+          ]
+        },
+        "high_grass": {
+          "reference_pixels": 472198,
+          "prediction_top3": [
+            [
+              "high_grass",
+              79.98
+            ],
+            [
+              "low_grass",
+              10.85
+            ],
+            [
+              "fence",
+              5.82
+            ]
+          ]
+        },
+        "sky": {
+          "reference_pixels": 587902,
+          "prediction_top3": [
+            [
+              "sky",
+              96.22
+            ],
+            [
+              "building",
+              2.78
+            ],
+            [
+              "forest",
+              0.6
+            ]
+          ]
+        }
+      },
+      "largest_prediction_regions": [
+        [
+          53,
+          "sky",
+          27.65
+        ],
+        [
+          23,
+          "asphalt",
+          24.73
+        ],
+        [
+          51,
+          "high_grass",
+          19.4
+        ],
+        [
+          38,
+          "building",
+          5.74
+        ],
+        [
+          41,
+          "fence",
+          5.7
+        ],
+        [
+          16,
+          "forest",
+          5.49
+        ],
+        [
+          11,
+          "road_marking",
+          3.29
+        ],
+        [
+          50,
+          "low_grass",
+          2.88
+        ],
+        [
+          27,
+          "tree_crown",
+          2.02
+        ],
+        [
+          24,
+          "gravel",
+          1.68
+        ]
+      ]
+    },
+    "go_spring_dirt_grass": {
+      "classes": 64,
+      "weights": "ddrnet_class_512.pth",
+      "weights_sha256": "b99c2838051bcd7b092fd3970aa62a77d5c0bbb809c9b9afb2ff4b0ebdaa4ee6",
+      "strictly_loaded_state_entries": 501,
+      "image": "go_spring_dirt_grass.jpg",
+      "image_sha256": "050232df6249989786a6eaae08759cbc230e55e4cee7da150edf56d69d048cbe",
+      "image_width_height": [
+        1440,
+        1080
+      ],
+      "input_shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "output_shape": [
+        1,
+        64,
+        512,
+        512
+      ],
+      "output_dtype": "torch.float32",
+      "finite_cuda_logits": true,
+      "device": "Orin",
+      "compute_capability": [
+        8,
+        7
+      ],
+      "torch": "2.0.0+nv23.05",
+      "cuda": "11.4",
+      "cudnn": 8600,
+      "tf32": false,
+      "warmup_count": 3,
+      "forward_count": 10,
+      "forward_ms": [
+        171.14639282226562,
+        170.75538635253906,
+        171.22073364257812,
+        171.82485961914062,
+        171.5515594482422,
+        171.23561096191406,
+        171.42303466796875,
+        171.12229919433594,
+        171.37753295898438,
+        171.39027404785156
+      ],
+      "forward_min_ms": 170.75538635253906,
+      "forward_median_ms": 171.30657196044922,
+      "forward_max_ms": 171.82485961914062,
+      "peak_forward_cuda_allocated_mib": 217.84765625,
+      "peak_forward_cuda_reserved_mib": 278.0,
+      "peak_cuda_allocated_mib": 305.34765625,
+      "peak_cuda_reserved_mib": 342.0,
+      "id_min_max": [
+        0,
+        53
+      ],
+      "one_warm_image_wall_ms": {
+        "preprocess_ms": 34.01792000022397,
+        "forward_wall_ms": 172.39126399999805,
+        "argmax_and_copy_ms": 3.7358079998739413,
+        "single_image_no_save_ms": 210.14499200009595
+      },
+      "legend_mapping_sha256": "88ae319ba5a3877dd3ae0773f693a6a5fdc283934140de9dfaff029108aefd7f",
+      "reference_regions_description": {
+        "dirt": {
+          "reference_pixels": 312503,
+          "prediction_top3": [
+            [
+              "gravel",
+              77.02
+            ],
+            [
+              "soil",
+              18.7
+            ],
+            [
+              "low_grass",
+              3.18
+            ]
+          ]
+        },
+        "grass": {
+          "reference_pixels": 394171,
+          "prediction_top3": [
+            [
+              "low_grass",
+              90.41
+            ],
+            [
+              "soil",
+              4.59
+            ],
+            [
+              "gravel",
+              2.87
+            ]
+          ]
+        },
+        "trees": {
+          "reference_pixels": 758191,
+          "prediction_top3": [
+            [
+              "forest",
+              65.43
+            ],
+            [
+              "tree_trunk",
+              28.11
+            ],
+            [
+              "low_grass",
+              1.79
+            ]
+          ]
+        }
+      },
+      "largest_prediction_regions": [
+        [
+          16,
+          "forest",
+          35.44
+        ],
+        [
+          50,
+          "low_grass",
+          24.83
+        ],
+        [
+          24,
+          "gravel",
+          16.23
+        ],
+        [
+          28,
+          "tree_trunk",
+          13.86
+        ],
+        [
+          31,
+          "soil",
+          5.1
+        ],
+        [
+          53,
+          "sky",
+          1.88
+        ],
+        [
+          29,
+          "debris",
+          1.21
+        ],
+        [
+          4,
+          "obstacle",
+          0.47
+        ],
+        [
+          51,
+          "high_grass",
+          0.3
+        ],
+        [
+          41,
+          "fence",
+          0.26
+        ]
+      ]
+    },
+    "go_spring_gravel": {
+      "classes": 64,
+      "weights": "ddrnet_class_512.pth",
+      "weights_sha256": "b99c2838051bcd7b092fd3970aa62a77d5c0bbb809c9b9afb2ff4b0ebdaa4ee6",
+      "strictly_loaded_state_entries": 501,
+      "image": "go_spring_gravel.jpg",
+      "image_sha256": "cc4f210f2a7788b448e9d62c74450357dc0594808d22405bb87964b9b8afe027",
+      "image_width_height": [
+        1440,
+        1080
+      ],
+      "input_shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "output_shape": [
+        1,
+        64,
+        512,
+        512
+      ],
+      "output_dtype": "torch.float32",
+      "finite_cuda_logits": true,
+      "device": "Orin",
+      "compute_capability": [
+        8,
+        7
+      ],
+      "torch": "2.0.0+nv23.05",
+      "cuda": "11.4",
+      "cudnn": 8600,
+      "tf32": false,
+      "warmup_count": 3,
+      "forward_count": 10,
+      "forward_ms": [
+        171.24908447265625,
+        170.44937133789062,
+        171.50210571289062,
+        170.87884521484375,
+        170.59564208984375,
+        171.063232421875,
+        171.00994873046875,
+        170.7205810546875,
+        170.8626251220703,
+        171.079833984375
+      ],
+      "forward_min_ms": 170.44937133789062,
+      "forward_median_ms": 170.94439697265625,
+      "forward_max_ms": 171.50210571289062,
+      "peak_forward_cuda_allocated_mib": 217.84765625,
+      "peak_forward_cuda_reserved_mib": 278.0,
+      "peak_cuda_allocated_mib": 305.34765625,
+      "peak_cuda_reserved_mib": 342.0,
+      "id_min_max": [
+        4,
+        53
+      ],
+      "one_warm_image_wall_ms": {
+        "preprocess_ms": 33.719680000103835,
+        "forward_wall_ms": 172.21625599995605,
+        "argmax_and_copy_ms": 3.408735999983037,
+        "single_image_no_save_ms": 209.34467200004292
+      },
+      "legend_mapping_sha256": "88ae319ba5a3877dd3ae0773f693a6a5fdc283934140de9dfaff029108aefd7f",
+      "reference_regions_description": {
+        "trees": {
+          "reference_pixels": 880420,
+          "prediction_top3": [
+            [
+              "forest",
+              62.49
+            ],
+            [
+              "bush",
+              14.03
+            ],
+            [
+              "low_grass",
+              8.19
+            ]
+          ]
+        },
+        "sky": {
+          "reference_pixels": 46458,
+          "prediction_top3": [
+            [
+              "sky",
+              72.92
+            ],
+            [
+              "forest",
+              27.08
+            ]
+          ]
+        },
+        "gravel": {
+          "reference_pixels": 612680,
+          "prediction_top3": [
+            [
+              "gravel",
+              98.96
+            ],
+            [
+              "low_grass",
+              0.97
+            ],
+            [
+              "asphalt",
+              0.07
+            ]
+          ]
+        }
+      },
+      "largest_prediction_regions": [
+        [
+          24,
+          "gravel",
+          39.07
+        ],
+        [
+          16,
+          "forest",
+          36.2
+        ],
+        [
+          17,
+          "bush",
+          7.93
+        ],
+        [
+          50,
+          "low_grass",
+          5.11
+        ],
+        [
+          28,
+          "tree_trunk",
+          4.6
+        ],
+        [
+          51,
+          "high_grass",
+          3.69
+        ],
+        [
+          53,
+          "sky",
+          2.17
+        ],
+        [
+          29,
+          "debris",
+          1.0
+        ],
+        [
+          4,
+          "obstacle",
+          0.13
+        ],
+        [
+          39,
+          "wall",
+          0.06
+        ]
+      ]
+    }
+  }
+}
