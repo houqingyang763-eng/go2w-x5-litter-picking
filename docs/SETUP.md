@@ -57,3 +57,33 @@ WSL 可作为本机 Linux 候选，但本次尚未验证 ROS 图形显示、GPU�
 一次部署记录保留：日期、做了什么、关键版本/命令、是否成功、下一步。只有安装或运行真实执行并检查后，才把状态改为“已部署”或“已通过”。
 
 来源及访问限制见 [官方资源与核验记录](RESOURCES.md)。
+
+## 板载目录与开发数据流
+
+### 11-22 真机只读盘点
+
+板载电脑为 Orin NX（ARM64、Ubuntu 20.04.5），系统 Python 3.8.10，Git 2.25.1。SSH 本次经板载 `eth0` 直达，网口协商为 1 Gb/s 全双工。通过 SFTP 将已有的 `~/gemini_preview/color.png` 完整读入本机内存，文件大小为 298,140 字节，PNG 文件头显示 640×480 RGB。
+
+| 板载路径 | 盘点结果 |
+| --- | --- |
+| `~/go2wlcy_ws` | LCY 学长的 ROS 2 Git 工作空间。源码和安装目录各对应 10 个包，涵盖底盘驱动、速度指令桥接、机器人描述、宇树消息、Nav2 和 RTAB-Map。已核对 `package.xml`、启动文件和安装目录。 |
+| `~/realsense_ws`、`~/orbbec_ws` | 两套相机驱动工作空间。当前 D435i 从 `realsense_ws` 运行，板载已实测彩色和深度话题。 |
+| `~/unitree_ws`、`~/arx_x5_ws` | 现有宇树及 X5 相关工作空间。 |
+| `~/cyclonedds_ws` | 当前 D435i 使用 Foxy 和 `rmw_cyclonedds_cpp`，域 ID 沿用默认值 0。`cyclonedds.xml` 绑定 `eth0`，组播用于参与者发现（`spdp`）。 [Cyclone DDS 配置文档](https://cyclonedds.io/docs/cyclonedds/0.10.2/config/cyclonedds_specifics.html#multicasting) |
+| `~/camera_ws/src`、`~/.vscode-server` | 前者盘点时为空，后者已有 VS Code Server 缓存。 |
+
+板载交互 Bash 由 `~/.bashrc` 提供 ROS 选择。输入 `1` 加载 Foxy、Cyclone DDS overlay 和板载 XML，输入 `2` 加载 ROS 1 Noetic。非交互式 SSH 命令如需 ROS 2，应显式加载 Foxy 及相应 DDS 环境。板载系统 Python 可找到 `cv2` 和 `numpy`，在该解释器下未找到 `torch` 或 `transformers`。
+
+### 建议的个人开发方式
+
+1. **连接和隔离**　沿用 VS Code Remote-SSH 的主机别名。板载个人工作树建议用 `~/workspaces/hou/go2w-litter-picking/`，在远程 VS Code 打开该目录。用 `pwd` 和 `git rev-parse --show-toplevel` 确认操作位置。Python 项目用自己的 `.venv/`，后续 ROS 包用自己的构建目录和显式加载的依赖。共用 `unitree` 账号时，个人目录提供项目隔离，账号权限仍共用。需要新增匹配的 VS Code Server 时，可在笔记本设置 `"remote.SSH.localServerDownload": "always"`，由笔记本下载再经 SSH 传入。 [VS Code Remote-SSH 文档](https://code.visualstudio.com/docs/remote/ssh)
+2. **代码和交接**　以现有笔记本 Git 仓库为主工作树。需要经常在两端写代码时，可在板载用 `git init --bare` 建 `~/workspaces/hou/git/go2w-litter-picking.git`。笔记本将它配为 `robot` remote，经同一 SSH 别名推送选定分支，板载个人目录从这个裸仓克隆。板载提交先推到机内裸仓，笔记本用 `git fetch robot` 拉回审阅。GitHub 同步从笔记本按授权执行，交接任务在 Issue 写目标、输入、输出和验收标准。 [Git 裸仓](https://git-scm.com/docs/git-init) · [Git SSH 地址格式](https://git-scm.com/docs/git-push) · [协作约定](../AGENTS.md)
+3. **照片和推理**　照片走 SFTP 或 `scp`，存到仓库已忽略的 `data/`，分割结果放 `outputs/`，权重留在本机模型缓存。今天建议在笔记本的 `Go2W-Foxy` WSL 中用 `~/venvs/go2w-vision/bin/python` 做静态 RGB 分割。已复核 Python 3.11.14、PyTorch 2.7.1+cu128 和 Transformers 4.57.6。SegFormer-B0 ADE20K 是先前筛选的候选，默认 Hugging Face 缓存尚未发现模型快照。一次运行保存语义分割叠加图和推理耗时。 [OpenSSH 文件传输](https://man.openbsd.org/scp.1) · [SegFormer-B0 模型](https://huggingface.co/nvidia/segformer-b0-finetuned-ade-512-512)
+4. **实时话题**　需要持续收流时，先按已测的 Foxy、Cyclone DDS 和域 0 检查话题发现，再用板载 `/camera/color/image_raw` 验证实际收帧。目前笔记本 WSL 网络实查为 NAT，跨机发现和收帧待测。按现有 30 FPS 的 RGB8 和 Z16 分辨率估算，双路原始图像载荷约 107 MB/s，实时预览可按需要选择路数、分辨率和频率。
+
+下面是笔记本项目 PowerShell 中的取图示例。把 `go2-dev` 换成当前 Windows SSH 主机别名。
+
+```powershell
+New-Item -ItemType Directory -Force .\data | Out-Null
+scp 'go2-dev:/home/unitree/gemini_preview/color.png' '.\data\go2-preview-color.png'
+```
