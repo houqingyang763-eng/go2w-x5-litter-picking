@@ -1,0 +1,55 @@
+name: 自动创建 Codex PR
+
+on:
+  push:
+    branches:
+      - 'codex/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: codex-pull-request-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  open-pull-request:
+    if: ${{ !github.event.deleted }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: 查找或创建 PR
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          HEAD_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+
+          pulls="repos/$GITHUB_REPOSITORY/pulls"
+          owner="${GITHUB_REPOSITORY%%/*}"
+          existing=$(gh api --method GET "$pulls" -f state=open \
+            -f base="$BASE_BRANCH" -f head="$owner:$HEAD_BRANCH" --jq '.[0].html_url // empty')
+          if [[ -n "$existing" ]]; then
+            printf '继续使用已有 PR %s\n' "$existing"
+            exit 0
+          fi
+
+          ahead=$(gh api --method GET "repos/$GITHUB_REPOSITORY/compare/$BASE_BRANCH...$GITHUB_SHA" \
+            -F per_page=1 --jq '.ahead_by')
+          if (( ahead == 0 )); then
+            printf '分支与目标之间没有新增提交。\n'
+            exit 0
+          fi
+
+          title=$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA" \
+            --jq '.commit.message | split("\n")[0]')
+          body='此 PR 由 GitHub Actions 在分支推送后自动创建。'
+          if [[ "$HEAD_BRANCH" =~ ^codex/issue-([1-9][0-9]*)(-|$) ]]; then
+            body=$(printf 'Refs #%s\n\n%s' "${BASH_REMATCH[1]}" "$body")
+          fi
+
+          gh api --method POST "$pulls" -f base="$BASE_BRANCH" -f head="$HEAD_BRANCH" \
+            -f title="${title:0:256}" -f body="$body" --jq '.html_url'
