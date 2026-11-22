@@ -25,3 +25,5 @@
 4. **说人话汇报**：先用约 100～200 字回答「要解决什么、实际做了什么、结果怎样、还差什么」，再附可核查的文件、测试命令、实验数据或 PR 链接。明确区分**未运行、离线验证、仿真验证、真机验证**，不拿代码完成冒充效果达标。
 5. **复盘再决策**：ChatGPT 读取 Issue、相关代码/PR、`STATUS.md`、`WORKLOG.md` 和证据，独立判断结果是否支持结论，并用易懂的中文给出下一步选项；用户选定后，再交给 Codex 执行。
 6. **新对话续接**：ChatGPT 网页版在开始仓库相关工作时，先通过 GitHub 连接读取 `AGENTS.md`、`STATUS.md` 和相关 Issue；不能假设聊天记录或仓库最新状态已自动同步。
+
+经授权推送 Codex 工作分支后，GitHub Actions 会为有新增提交的「codex/」分支向默认分支开 PR。已有开放 PR 时沿用该 PR。「codex/issue-N-说明」会附上对 Issue N 的引用。 [自动开 PR 工作流](.github/workflows/auto-pull-request.yml)

@@ -1,0 +1,17 @@
+{
+  "checkpoint": {
+    "file": "ddrnet_class_512.pth",
+    "url": "https://goose-dataset.de/models/ddrnet_class_512.pth",
+    "bytes": 259419077,
+    "sha256": "b99c2838051bcd7b092fd3970aa62a77d5c0bbb809c9b9afb2ff4b0ebdaa4ee6",
+    "etag": "\"6a3e87e1-f766bc5\""
+  },
+  "class_mapping": {
+    "archive": "https://goose-dataset.de/storage/goose_2d_val.zip",
+    "member": "goose_label_mapping.csv",
+    "file": "goose_label_mapping.csv",
+    "bytes": 1427,
+    "sha256": "88ae319ba5a3877dd3ae0773f693a6a5fdc283934140de9dfaff029108aefd7f"
+  },
+  "upstream_revision": "fbbc0e755e54bbdc65a9fa7a3f327533425025f6"
+}

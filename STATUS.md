@@ -4,20 +4,22 @@
 
 ## 所处阶段
 
-**当前优先探索语义可通行性，正在整理视觉 Demo 与 WVN 复现路线。** 已合并用户的新项目背景；仓库仍只有文档，没有可复现代码或算法运行结果，也没有确认的本项目安装、集成与真机验证记录。本轮仅更新信息。
+**当前优先探索语义可通行性，正在整理视觉 Demo 与 WVN 复现路线。** 已完成 GO 春冬轨迹离线数据准备及 GOOSE DDRNet 静态图片板载验收。语义地图和实时 ROS 集成待验证。
 
 | 项目 | 当前状态 |
 | --- | --- |
 | 本地 Git 与公开 GitHub 仓库 | 已建立并发布到 `main`；公开访问与本地/远端内容一致性已核验 |
+| GitHub 自动开 PR | 推送有新增提交的 Codex 工作分支后，由 GitHub Actions 开 PR 或沿用已有开放 PR。分支名中的 Issue 编号会写入 PR。 [工作流](.github/workflows/auto-pull-request.yml) |
 | 系统构成与接口理解 | 初稿已写，建议架构与交付事实分别说明 |
 | 官方资源核验 | 保留 11-11 SDK 核验；11-17 补充 WVN、DINO/DINOv2、STEGO 入口及兼容边界 |
 | GO 春冬轨迹（Issue #3） | 已离线验收。前向左相机预览 79 / 83 帧，约 6 FPS 序列各 3,600 帧，官方标注精确匹配 119 / 110 帧。春季有绿草与土路，冬季 110 帧均含雪且裸土标签覆盖为 0。数据位于 `D:/Go2W-data/go_issue3`，等待用户审阅。 [复现和验收](scripts/go_tracks/README.md) · [Issue #3](https://github.com/houqingyang763-eng/go2w-x5-litter-picking/issues/3) |
+| GOOSE DDRNet-39 64 类（Issue #4） | Orin NX 15W 真机验收通过。沿用 #2 虚拟环境，64 类 CUDA FP32 前向中位数 171.49 ms，前向 CUDA 分配峰值 217.85 MiB。12 类同场对照 167.09 ms。已返回三张图的原图、着色与叠加，量化分割精度待统一测试集评估。 [复现与验收](scripts/goose_ddrnet/VALIDATION_CLASS64.md) · [Issue #4](https://github.com/houqingyang763-eng/go2w-x5-litter-picking/issues/4) |
 | 本机环境 | 保留 11-11 只读盘点，本轮未复测或安装；用户具备 Linux/Docker/深度学习/ROS 2 基础 |
 | 软件栈 | Ubuntu 22.04 + ROS 2 Humble、Python 为当前计划；PyTorch/CUDA 按需，整套依赖兼容尚未确认 |
 | 个人优先方向 | 视觉语义感知 + 地形可通行性估计 + 语义代价地图；算法未定版 |
 | 抓取相机 | 用户确认机械臂上将安装相机；型号、连杆位置、深度能力和实际安装状态待核实 |
 | 参考方法 | 优先关注 WVN；DINO/DINOv2、STEGO 作视觉学习与基线候选；SemMap 的准确论文/链接待确认 |
-| Demo / 实验 | 尚未部署、运行或评价；WVN 的 ROS 1 集成与项目 ROS 2 计划需要分别处理 |
+| Demo / 实验 | 已完成 GO 春冬数据准备与 GOOSE DDRNet 静态图像真机验收。WVN 与地图融合待验证 |
 
 11-11 常规 Git HTTPS 推送遇到地址解析与证书链问题，当日通过 GitHub 官方 API 完成发布与本地提交同步。11-17 已核对远端起点与本地一致，本轮继续使用 API；未复测常规 `fetch/push`，见 [部署记录](docs/SETUP.md)。
 
